@@ -12,25 +12,24 @@
  * obtain it through the world-wide-web, please send an email
  * to license@zend.com so we can send you a copy immediately.
  *
- * @category  Zend
- * @package   Zend_ProgressBar
+ * @category   Zend
+ * @package    Zend_ProgressBar
  * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id$
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/**
- * @namespace
- */
-namespace Zend\ProgressBar;
+namespace Zend\ProgressBar\Exception;
 
 /**
- * Exception class for Zend_ProgressBar
+ * Exception for Zend_Progressbar component.
  *
- * @category  Zend
- * @package   Zend_ProgressBar
+ * @category   Zend
+ * @package    Zend_ProgressBar
  * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-interface Exception
-{
-}
+class InvalidArgumentException
+    extends \InvalidArgumentException
+    implements ExceptionInterface
+{}
