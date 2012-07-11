@@ -1,28 +1,28 @@
 {
-    "name": "zendframework/zend-progress-bar",
-    "description": "Zend\\ProgressBar component",
+    "name": "zendframework/zend-progressbar",
+    "description": "component to create and update progressbars in different environments",
     "license": "BSD-3-Clause",
     "keywords": [
         "zf2",
-        "progress-bar"
+        "progressbar"
     ],
     "autoload": {
         "psr-4": {
-            "Zend\\ProgressBar\\": "src/"
+            "Zend\\ProgressBar": "src/"
         }
     },
     "require": {
-        "php": ">=5.3.23"
-    },
-    "require-dev": {
-        "fabpot/php-cs-fixer": "1.7.*",
-        "satooshi/php-coveralls": "dev-master",
-        "phpunit/PHPUnit": "~4.0"
+        "php": ">=5.3.3"
     },
     "homepage": "https://github.com/zendframework/zend-progress-bar",
     "autoload-dev": {
         "psr-4": {
             "ZendTest\\ProgressBar\\": "test/"
         }
+    },
+    "require-dev": {
+        "fabpot/php-cs-fixer": "1.7.*",
+        "satooshi/php-coveralls": "dev-master",
+        "phpunit/PHPUnit": "~4.0"
     }
 }
