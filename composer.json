@@ -12,7 +12,8 @@
         }
     },
     "require": {
-        "php": ">=5.3.3"
+        "php": ">=5.3.3",
+        "zendframework/zend-stdlib": "self.version"
     },
     "homepage": "https://github.com/zendframework/zend-progress-bar",
     "autoload-dev": {
