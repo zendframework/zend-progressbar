@@ -8,7 +8,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Zend\\ProgressBar": "src/"
+            "Zend\\ProgressBar\\": "src/"
         }
     },
     "require": {
