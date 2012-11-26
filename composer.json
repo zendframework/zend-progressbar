@@ -1,5 +1,6 @@
 {
     "name": "zendframework/zend-progressbar",
+    "description": "component to create and update progressbars in different environments",
     "license": "BSD-3-Clause",
     "keywords": [
         "zf2",
@@ -7,11 +8,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Zend\\ProgressBar": "src/"
+            "Zend\\ProgressBar\\": "src/"
         }
     },
     "require": {
-        "php": ">=5.3.3"
+        "php": ">=5.3.3",
+        "zendframework/zend-stdlib": "self.version"
     },
     "homepage": "https://github.com/zendframework/zend-progress-bar",
     "autoload-dev": {

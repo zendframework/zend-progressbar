@@ -8,16 +8,22 @@
  * @package   Zend_ProgressBar
  */
 
-namespace Zend\ProgressBar\Adapter\Exception;
+namespace Zend\ProgressBar\Upload;
 
-use Zend\ProgressBar\Exception;
+use Traversable;
+use Zend\Stdlib\ArrayUtils;
 
 /**
- * Exception for Zend_Progressbar component.
+ * Interface for Upload Progress Handlers
  *
- * @category   Zend
- * @package    Zend_ProgressBar
+ * @category  Zend
+ * @package   Zend_ProgressBar
  */
-class InvalidArgumentException extends Exception\InvalidArgumentException implements
-    ExceptionInterface
-{}
+interface UploadHandlerInterface
+{
+    /**
+     * @param  string $id
+     * @return array
+     */
+    public function getProgress($id);
+}

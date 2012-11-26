@@ -8,16 +8,11 @@
  * @package   Zend_ProgressBar
  */
 
-namespace Zend\ProgressBar\Adapter\Exception;
-
-use Zend\ProgressBar\Exception;
+namespace Zend\ProgressBar\Exception;
 
 /**
- * Exception for Zend_Progressbar component.
- *
  * @category   Zend
  * @package    Zend_ProgressBar
  */
-class InvalidArgumentException extends Exception\InvalidArgumentException implements
-    ExceptionInterface
+class PhpEnvironmentException extends RuntimeException
 {}
