@@ -7,13 +7,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Zend\ProgressBar\Adapter\Exception;
+namespace Zend\ProgressBar\Exception;
 
-use Zend\ProgressBar\Exception\ExceptionInterface as ProgressBarException;
-
-/**
- * Exception class for Zend_ProgressBar_Adapter
- */
-interface ExceptionInterface extends ProgressBarException
-{
-}
+class PhpEnvironmentException extends RuntimeException
+{}

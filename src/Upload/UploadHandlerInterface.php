@@ -7,13 +7,19 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Zend\ProgressBar\Adapter\Exception;
+namespace Zend\ProgressBar\Upload;
 
-use Zend\ProgressBar\Exception\ExceptionInterface as ProgressBarException;
+use Traversable;
+use Zend\Stdlib\ArrayUtils;
 
 /**
- * Exception class for Zend_ProgressBar_Adapter
+ * Interface for Upload Progress Handlers
  */
-interface ExceptionInterface extends ProgressBarException
+interface UploadHandlerInterface
 {
+    /**
+     * @param  string $id
+     * @return array
+     */
+    public function getProgress($id);
 }
