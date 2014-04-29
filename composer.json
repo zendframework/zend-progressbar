@@ -6,6 +6,7 @@
         "zf2",
         "progressbar"
     ],
+    "homepage": "https://github.com/zendframework/zend-progress-bar",
     "autoload": {
         "psr-4": {
             "Zend\\ProgressBar\\": "src/"
@@ -32,7 +33,6 @@
             "dev-develop": "2.4-dev"
         }
     },
-    "homepage": "https://github.com/zendframework/zend-progress-bar",
     "autoload-dev": {
         "psr-4": {
             "ZendTest\\ProgressBar\\": "test/"
