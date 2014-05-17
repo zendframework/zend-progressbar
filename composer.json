@@ -6,14 +6,22 @@
         "zf2",
         "progressbar"
     ],
+    "homepage": "https://github.com/zendframework/zend-progress-bar",
     "autoload": {
         "psr-4": {
             "Zend\\ProgressBar\\": "src/"
         }
     },
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.3.23",
         "zendframework/zend-stdlib": "self.version"
+    },
+    "require-dev": {
+        "zendframework/zend-json": "self.version",
+        "zendframework/zend-session": "self.version",
+        "fabpot/php-cs-fixer": "1.7.*",
+        "satooshi/php-coveralls": "dev-master",
+        "phpunit/PHPUnit": "~4.0"
     },
     "suggest": {
         "zendframework/zend-json": "Zend\\Json component",
@@ -21,19 +29,13 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.2-dev",
-            "dev-develop": "2.3-dev"
+            "dev-master": "2.3-dev",
+            "dev-develop": "2.4-dev"
         }
     },
-    "homepage": "https://github.com/zendframework/zend-progress-bar",
     "autoload-dev": {
         "psr-4": {
             "ZendTest\\ProgressBar\\": "test/"
         }
-    },
-    "require-dev": {
-        "fabpot/php-cs-fixer": "1.7.*",
-        "satooshi/php-coveralls": "dev-master",
-        "phpunit/PHPUnit": "~4.0"
     }
 }
