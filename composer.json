@@ -27,6 +27,8 @@
         "zendframework/zend-json": "Zend\\Json component",
         "zendframework/zend-session": "To support progressbar persistent"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "extra": {
         "branch-alias": {
             "dev-master": "2.4-dev",
