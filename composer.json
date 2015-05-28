@@ -6,7 +6,7 @@
         "zf2",
         "progressbar"
     ],
-    "homepage": "https://github.com/zendframework/zend-progress-bar",
+    "homepage": "https://github.com/zendframework/zend-progressbar",
     "autoload": {
         "psr-4": {
             "Zend\\ProgressBar\\": "src/"
