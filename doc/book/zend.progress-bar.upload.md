@@ -42,11 +42,11 @@ You can also work manually with `getProgress()` without using a `Zend\ProgressBa
 The `getProgress()` will return you an array with several keys. They will sometimes differ based on
 the specific Upload handler used, but the following keys are always standard:
 
-- `total`: The total file size of the uploaded file(s) in bytes as integer.
-- `current`: The current uploaded file size in bytes as integer.
-- `rate`: The average upload speed in bytes per second as integer.
-- `done`: Returns `TRUE` when the upload is finished and `FALSE` otherwise.
-- `message`: A status message. Either the progress as text in the form "10kB / 200kB", or a helpful
+* `total`: The total file size of the uploaded file(s) in bytes as integer.
+* `current`: The current uploaded file size in bytes as integer.
+* `rate`: The average upload speed in bytes per second as integer.
+* `done`: Returns `TRUE` when the upload is finished and `FALSE` otherwise.
+* `message`: A status message. Either the progress as text in the form "10kB / 200kB", or a helpful
 error message in the case of a problem. Problems such as: no upload in progress, failure while
 retrieving the data for the progress, or that the upload has been canceled.
 
