@@ -82,8 +82,6 @@ public function sessionProgressAction()
 - \[Zend\\ProgressBar\\Upload\\SessionProgress\](zend.progress-bar.upload.session-progress)
 - \[Zend\\Progressbar\\Upload\\UploadProgress\](zend.progress-bar.upload.upload-progress)
 
-orphan  
-
 ### APC Progress Handler
 
 The `Zend\ProgressBar\Upload\ApcProgress` handler uses the [APC
@@ -95,8 +93,6 @@ The [APC extension](http://php.net/manual/en/book.apc.php) is required.
 This handler is best used with the
 \[FormFileApcProgress\](zend.form.view.helper.form-file-apc-progress) view helper, to provide a
 hidden element with the upload progress identifier.
-
-orphan  
 
 ### Session Progress Handler
 
@@ -110,8 +106,6 @@ PHP 5.4 is required.
 This handler is best used with the
 \[FormFileSessionProgress\](zend.form.view.helper.form-file-session-progress) view helper, to
 provide a hidden element with the upload progress identifier.
-
-orphan  
 
 ### Upload Progress Handler
 
