@@ -89,7 +89,7 @@ orphan
 The `Zend\ProgressBar\Upload\ApcProgress` handler uses the [APC
 extension](http://php.net/manual/en/book.apc.php) for tracking upload progress.
 
-> ## Note
+> ### Note
 The [APC extension](http://php.net/manual/en/book.apc.php) is required.
 
 This handler is best used with the
@@ -104,7 +104,7 @@ The `Zend\ProgressBar\Upload\SessionProgress` handler uses the PHP 5.4 [Session
 Progress](http://php.net/manual/en/session.upload-progress.php) feature for tracking upload
 progress.
 
-> ## Note
+> ### Note
 PHP 5.4 is required.
 
 This handler is best used with the
@@ -118,7 +118,7 @@ orphan
 The `Zend\ProgressBar\Upload\UploadProgress` handler uses the [PECL Uploadprogress
 extension](http://pecl.php.net/package/uploadprogress) for tracking upload progress.
 
-> ## Note
+> ### Note
 The [PECL Uploadprogress extension](http://pecl.php.net/package/uploadprogress) is required.
 
 This handler is best used with the
