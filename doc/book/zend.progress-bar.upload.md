@@ -8,7 +8,7 @@ uploadprogress, or Session) and ensure that your server setup has the appropriat
 feature enabled. All of the progress handlers use the same interface.
 
 When uploading a file with a form POST, you must also include the progress identifier in a hidden
-input. The \[File Upload Progress View Helpers\](zend.form.view.helper.file) provide a convenient
+input. The [File Upload Progress View Helpers](https://github.com/zendframework/zend-form) provide a convenient
 way to add the hidden input based on your handler type.
 
 ## Methods of Reporting Progress
@@ -93,7 +93,7 @@ extension](http://php.net/manual/en/book.apc.php) for tracking upload progress.
 The [APC extension](http://php.net/manual/en/book.apc.php) is required.
 
 This handler is best used with the
-\[FormFileApcProgress\](zend.form.view.helper.form-file-apc-progress) view helper, to provide a
+[FormFileApcProgress](https://github.com/zendframework/zend-form) view helper, to provide a
 hidden element with the upload progress identifier.
 
 orphan  
@@ -108,7 +108,7 @@ progress.
 PHP 5.4 is required.
 
 This handler is best used with the
-\[FormFileSessionProgress\](zend.form.view.helper.form-file-session-progress) view helper, to
+[FormFileSessionProgress](https://github.com/zendframework/zend-form) view helper, to
 provide a hidden element with the upload progress identifier.
 
 orphan  
@@ -122,5 +122,5 @@ extension](http://pecl.php.net/package/uploadprogress) for tracking upload progr
 The [PECL Uploadprogress extension](http://pecl.php.net/package/uploadprogress) is required.
 
 This handler is best used with the
-\[FormFileUploadProgress\](zend.form.view.helper.form-file-upload-progress) view helper, to provide
+[FormFileUploadProgress](https://github.com/zendframework/zend-form) view helper, to provide
 a hidden element with the upload progress identifier.
