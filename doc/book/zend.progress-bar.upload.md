@@ -76,12 +76,6 @@ public function sessionProgressAction()
 
 ## Standard Handlers
 
-`Zend\ProgressBar\Upload` comes with the following three upload handlers:
-
-> -   \[Zend\\Progressbar\\Upload\\ApcProgress\](zend.progress-bar.upload.apc-progress)
-- \[Zend\\ProgressBar\\Upload\\SessionProgress\](zend.progress-bar.upload.session-progress)
-- \[Zend\\Progressbar\\Upload\\UploadProgress\](zend.progress-bar.upload.upload-progress)
-
 orphan  
 
 ### APC Progress Handler
