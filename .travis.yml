@@ -19,7 +19,7 @@ env:
     - GH_USER_NAME: "Matthew Weier O'Phinney"
     - GH_USER_EMAIL: matthew@weierophinney.net
     - GH_REF: github.com/zendframework/zend-progressbar.git
-    - secure: ""
+    - secure: "hmWg/eVf6yosZc9dyVW5/mNs5S8YfwJzm8Xq3mhu96FinIuyNDiKC9x3UfjDEQNNko44ASPfvre/xcS43BAcatT399A3KTqui+t1vtTgL71VELVkJd6n50vOLC6HIrTtGpK3MbdeO7K3K0PjgtGNpnt/dP4tCbitL1C+pqjF9fm960PaBWUMU2fycb5Vqew9bi7+HMNoPfdvyJ56TVH2Blqr2VXrjmGxsWH1GHjvvRwfiAuOi6O9oAH/XgZU9OuSVA24Yz0RnTAlP/ukWCAbWVjcY3LLNmiRy23lUrrH3puSmctG6fyoWWQbq1VBrIFclfPtQjlI2nsIoPqRUD76bmKZI8CbxIrem5sIngtFqoK2Q0SchA6BOKoTzs6FxLuXyeceeFkim3NnPUlHUGOSGvJ8kGnkLzoPaZ+H42dEYHHfuv4z8IHcAV28VNR14IyDU6tRwhOiAYZsD1DloMXa9IP+mFEq79eK9KIxythuh76la7HiRnbAW/b4NQ6/gbO2/DtUiGIwX5Al8hUhtDMk4EoBF2AgJitOrhBEYDe88I3EqN2P4Nu11dYhknPVSvNaHhsg3RtCHF2bmCf8V6HVc/pPXkRG6OWxuIomgqw6GAxp0oSOQOkMkbd8yV3Fuw3XEFgPU2eIIPKK4OOP/U+d7fvnm1U6FSagpb7fjVN4s1c="
 
 matrix:
   fast_finish: true

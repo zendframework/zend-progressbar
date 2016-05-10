@@ -8,10 +8,10 @@
 nbproject
 tmp/
 doc/html/
+vendor/
 zf-mkdoc-theme/
 
 clover.xml
 composer.lock
 coveralls-upload.json
 phpunit.xml
-vendor
