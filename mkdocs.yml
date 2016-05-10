@@ -1,0 +1,12 @@
+docs_dir: doc/book
+site_dir: doc/html
+pages:
+    - index.md
+    - "Progress Bars":
+        - Intro: intro.md
+        - Adapters: adapters.md
+    - "File Upload Handlers": upload.md
+site_name: zend-progressbar
+site_description: zend-progressbar
+repo_url: 'https://github.com/zendframework/zend-progressbar'
+copyright: 'Copyright (c) 2016 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a>'
