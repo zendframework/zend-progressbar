@@ -2,7 +2,9 @@ docs_dir: doc/book
 site_dir: doc/html
 pages:
     - index.md
-    - Intro: intro.md
+    - "Progress Bars":
+        - Intro: intro.md
+        - Adapters: adapters.md
     - "File Upload Handlers": upload.md
 site_name: zend-progressbar
 site_description: zend-progressbar
