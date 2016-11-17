@@ -9,6 +9,8 @@
 
 namespace ZendTest\ProgressBar\Adapter;
 
+use ZendTest\ProgressBar\TestAsset\JsPushStub;
+
 /**
  * @group      Zend_ProgressBar
  */
@@ -22,7 +24,8 @@ class JsPushTest extends \PHPUnit_Framework_TestCase
         $adapter->notify(0, 2, 0.5, 1, 1, 'status');
         $output = $adapter->getLastOutput();
 
-        $matches = preg_match('#<script type="text/javascript">parent.'. preg_quote('Zend\\ProgressBar\\ProgressBar\\Update') . '\((.*?)\);</script>#', $output, $result);
+        $matches = preg_match('#<script type="text/javascript">parent.'
+            . preg_quote('Zend\\ProgressBar\\ProgressBar\\Update') . '\((.*?)\);</script>#', $output, $result);
         $this->assertEquals(1, $matches);
 
         $data = json_decode($result[1], true);
@@ -37,22 +40,8 @@ class JsPushTest extends \PHPUnit_Framework_TestCase
         $adapter->finish();
         $output = $adapter->getLastOutput();
 
-        $matches = preg_match('#<script type="text/javascript">parent.'. preg_quote('Zend\ProgressBar\ProgressBar\Finish') . '\(\);</script>#', $output, $result);
+        $matches = preg_match('#<script type="text/javascript">parent.'
+            . preg_quote('Zend\ProgressBar\ProgressBar\Finish') . '\(\);</script>#', $output, $result);
         $this->assertEquals(1, $matches);
-    }
-}
-
-class JsPushStub extends \Zend\ProgressBar\Adapter\JsPush
-{
-    protected $_lastOutput = null;
-
-    public function getLastOutput()
-    {
-        return $this->_lastOutput;
-    }
-
-    protected function _outputData($data)
-    {
-        $this->_lastOutput = $data;
     }
 }

@@ -20,8 +20,10 @@ class ConsoleStub extends Adapter\Console
         return $this->lastOutput;
     }
 
+    // @codingStandardsIgnoreStart
     protected function _outputData($data)
     {
+        // @codingStandardsIgnoreEnd
         $this->lastOutput = $data;
     }
 
