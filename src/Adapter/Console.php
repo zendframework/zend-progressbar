@@ -192,7 +192,7 @@ class Console extends AbstractAdapter
     public function getOutputStream()
     {
         if ($this->outputStream === null) {
-            if (!defined('STDOUT')) {
+            if (! defined('STDOUT')) {
                 $this->outputStream = fopen('php://stdout', 'w');
             } else {
                 return STDOUT;
@@ -210,7 +210,7 @@ class Console extends AbstractAdapter
      */
     public function setWidth($width = null)
     {
-        if ($width === null || !is_int($width)) {
+        if ($width === null || ! is_int($width)) {
             if (substr(PHP_OS, 0, 3) === 'WIN') {
                 // We have to default to 79 on windows, because the windows
                 // terminal always has a fixed width of 80 characters and the
@@ -351,7 +351,7 @@ class Console extends AbstractAdapter
                                 self::FINISH_ACTION_EOL,
                                 self::FINISH_ACTION_NONE];
 
-        if (!in_array($action, $allowedActions)) {
+        if (! in_array($action, $allowedActions)) {
             throw new Exception\InvalidArgumentException('Invalid finish action specified');
         }
 

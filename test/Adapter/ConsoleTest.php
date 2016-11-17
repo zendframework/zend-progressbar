@@ -127,7 +127,7 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
 
     public function testCustomOrder()
     {
-        $adapter = new ConsoleStub(['width' => 25, 'elements' =>  [Adapter\Console::ELEMENT_ETA,
+        $adapter = new ConsoleStub(['width' => 25, 'elements' => [Adapter\Console::ELEMENT_ETA,
                                                                       Adapter\Console::ELEMENT_PERCENT,
                                                                       Adapter\Console::ELEMENT_BAR]]);
         $adapter->notify(0, 100, 0, 0, null, null);
