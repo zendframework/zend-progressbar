@@ -43,18 +43,3 @@ class JsPushTest extends TestCase
         $this->assertEquals(1, $matches);
     }
 }
-
-class JsPushStub extends \Zend\ProgressBar\Adapter\JsPush
-{
-    protected $_lastOutput = null;
-
-    public function getLastOutput()
-    {
-        return $this->_lastOutput;
-    }
-
-    protected function _outputData($data)
-    {
-        $this->_lastOutput = $data;
-    }
-}

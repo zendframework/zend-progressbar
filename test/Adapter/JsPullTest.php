@@ -40,18 +40,3 @@ class JsPullTest extends TestCase
         $this->assertTrue($data['finished']);
     }
 }
-
-class JsPullStub extends \Zend\ProgressBar\Adapter\JsPull
-{
-    protected $_lastOutput = null;
-
-    public function getLastOutput()
-    {
-        return $this->_lastOutput;
-    }
-
-    protected function _outputData($data)
-    {
-        $this->_lastOutput = $data;
-    }
-}
