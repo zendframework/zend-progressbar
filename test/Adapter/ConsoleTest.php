@@ -13,8 +13,6 @@ use PHPUnit\Framework\TestCase;
 use Zend\ProgressBar\Adapter;
 use Zend\Stdlib\StringUtils;
 
-require_once 'MockupStream.php';
-
 /**
  * @group      Zend_ProgressBar
  */
