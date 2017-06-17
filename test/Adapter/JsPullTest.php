@@ -9,10 +9,12 @@
 
 namespace ZendTest\ProgressBar\Adapter;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group      Zend_ProgressBar
  */
-class JsPullTest extends \PHPUnit_Framework_TestCase
+class JsPullTest extends TestCase
 {
     public function testJson()
     {

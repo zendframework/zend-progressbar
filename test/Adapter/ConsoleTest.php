@@ -9,6 +9,7 @@
 
 namespace ZendTest\ProgressBar\Adapter;
 
+use PHPUnit\Framework\TestCase;
 use Zend\ProgressBar\Adapter;
 use Zend\Stdlib\StringUtils;
 
@@ -17,7 +18,7 @@ require_once 'MockupStream.php';
 /**
  * @group      Zend_ProgressBar
  */
-class ConsoleTest extends \PHPUnit_Framework_TestCase
+class ConsoleTest extends TestCase
 {
     protected function setUp()
     {

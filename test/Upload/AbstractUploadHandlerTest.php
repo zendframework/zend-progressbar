@@ -9,12 +9,13 @@
 
 namespace ZendTest\ProgressBar\Upload;
 
+use PHPUnit\Framework\TestCase;
 use Zend\ProgressBar\ProgressBar;
 
 /**
  * @group      Zend_ProgressBar
  */
-class AbstractUploadHandlerTest extends \PHPUnit_Framework_TestCase
+class AbstractUploadHandlerTest extends TestCase
 {
     /**
      * @return void

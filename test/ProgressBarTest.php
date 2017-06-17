@@ -9,10 +9,12 @@
 
 namespace ZendTest\ProgressBar;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group      Zend_ProgressBar
  */
-class ProgressBarTest extends \PHPUnit_Framework_TestCase
+class ProgressBarTest extends TestCase
 {
     public function testGreaterMin()
     {
