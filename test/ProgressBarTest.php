@@ -10,6 +10,7 @@
 namespace ZendTest\ProgressBar;
 
 use PHPUnit\Framework\TestCase;
+use Zend\ProgressBar\Exception;
 
 /**
  * @group      Zend_ProgressBar
@@ -18,8 +19,9 @@ class ProgressBarTest extends TestCase
 {
     public function testGreaterMin()
     {
-        $this->setExpectedException('Zend\ProgressBar\Exception\OutOfRangeException', '$max must be greater than $min');
-        $progressBar = $this->_getProgressBar(1, 0);
+        $this->expectExceptionMessage(Exception\OutOfRangeException::class);
+        $this->expectExceptionMessage('$max must be greater than $min');
+        $this->_getProgressBar(1, 0);
     }
 
     public function testPersistence()

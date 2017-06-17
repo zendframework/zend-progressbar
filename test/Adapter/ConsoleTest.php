@@ -22,7 +22,7 @@ class ConsoleTest extends TestCase
 {
     protected function setUp()
     {
-        stream_wrapper_register("zendprogressbaradapterconsole", 'ZendTest\ProgressBar\Adapter\MockupStream');
+        stream_wrapper_register("zendprogressbaradapterconsole", MockupStream::class);
     }
 
     protected function tearDown()
@@ -81,7 +81,8 @@ class ConsoleTest extends TestCase
 
     public function testInvalidElement()
     {
-        $this->setExpectedException('Zend\ProgressBar\Adapter\Exception\InvalidArgumentException', 'Invalid element found');
+        $this->expectException(Adapter\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid element found');
         $adapter = new ConsoleStub(['width' => 30, 'elements' => ['foo']]);
     }
 
@@ -225,7 +226,8 @@ class ConsoleTest extends TestCase
     {
         $adapter = new Adapter\Console();
 
-        $this->setExpectedException('Zend\ProgressBar\Adapter\Exception\RuntimeException', 'Unable to open stream');
+        $this->expectException(Adapter\Exception\RuntimeException::class);
+        $this->expectExceptionMessage('Unable to open stream');
         $adapter->setOutputStream(null);
     }
 
@@ -276,7 +278,8 @@ class ConsoleTest extends TestCase
     {
         $adapter = new Adapter\Console();
 
-        $this->setExpectedException('Zend\ProgressBar\Adapter\Exception\InvalidArgumentException', 'Character may not be empty');
+        $this->expectException(Adapter\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Character may not be empty');
         $adapter->setBarLeftChar(null);
     }
 
@@ -284,7 +287,8 @@ class ConsoleTest extends TestCase
     {
         $adapter = new Adapter\Console();
 
-        $this->setExpectedException('Zend\ProgressBar\Adapter\Exception\InvalidArgumentException', 'Character may not be empty');
+        $this->expectException(Adapter\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Character may not be empty');
         $adapter->setBarRightChar(null);
     }
 
@@ -292,7 +296,8 @@ class ConsoleTest extends TestCase
     {
         $adapter = new Adapter\Console();
 
-        $this->setExpectedException('Zend\ProgressBar\Adapter\Exception\InvalidArgumentException', 'Invalid finish action specified');
+        $this->expectException(Adapter\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid finish action specified');
         $adapter->setFinishAction('CUSTOM_FINISH_ACTION');
     }
 
