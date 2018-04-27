@@ -9,6 +9,8 @@
 
 namespace ZendTest\ProgressBar\Adapter;
 
+use ZendTest\ProgressBar\TestAsset\JsPullStub;
+
 /**
  * @group      Zend_ProgressBar
  */
@@ -36,20 +38,5 @@ class JsPullTest extends \PHPUnit_Framework_TestCase
         $data = json_decode($output, true);
 
         $this->assertTrue($data['finished']);
-    }
-}
-
-class JsPullStub extends \Zend\ProgressBar\Adapter\JsPull
-{
-    protected $_lastOutput = null;
-
-    public function getLastOutput()
-    {
-        return $this->_lastOutput;
-    }
-
-    protected function _outputData($data)
-    {
-        $this->_lastOutput = $data;
     }
 }

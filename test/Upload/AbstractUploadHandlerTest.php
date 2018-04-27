@@ -144,7 +144,10 @@ class AbstractUploadHandlerTest extends \PHPUnit_Framework_TestCase
                 ->method('notify');
         }
         $progressBar = new ProgressBar(
-            $adapterStub, 0, $progressData['total'], 'testSession'
+            $adapterStub,
+            0,
+            $progressData['total'],
+            'testSession'
         );
 
 
