@@ -2,30 +2,16 @@ sudo: false
 
 language: php
 
-branches:
-  except:
-    - /^release-.*$/
-    - /^ghgfk-.*$/
-
 cache:
   directories:
     - $HOME/.composer/cache
-    - $HOME/.local
-    - zf-mkdoc-theme
 
 env:
   global:
     - COMPOSER_ARGS="--no-interaction"
-    - COVERAGE_DEPS="satooshi/php-coveralls"
-    - LEGACY_DEPS="phpunit/phpunit"
-    - SITE_URL: https://zendframework.github.io/zend-progressbar
-    - GH_USER_NAME: "Matthew Weier O'Phinney"
-    - GH_USER_EMAIL: matthew@weierophinney.net
-    - GH_REF: github.com/zendframework/zend-progressbar.git
-    - secure: "hmWg/eVf6yosZc9dyVW5/mNs5S8YfwJzm8Xq3mhu96FinIuyNDiKC9x3UfjDEQNNko44ASPfvre/xcS43BAcatT399A3KTqui+t1vtTgL71VELVkJd6n50vOLC6HIrTtGpK3MbdeO7K3K0PjgtGNpnt/dP4tCbitL1C+pqjF9fm960PaBWUMU2fycb5Vqew9bi7+HMNoPfdvyJ56TVH2Blqr2VXrjmGxsWH1GHjvvRwfiAuOi6O9oAH/XgZU9OuSVA24Yz0RnTAlP/ukWCAbWVjcY3LLNmiRy23lUrrH3puSmctG6fyoWWQbq1VBrIFclfPtQjlI2nsIoPqRUD76bmKZI8CbxIrem5sIngtFqoK2Q0SchA6BOKoTzs6FxLuXyeceeFkim3NnPUlHUGOSGvJ8kGnkLzoPaZ+H42dEYHHfuv4z8IHcAV28VNR14IyDU6tRwhOiAYZsD1DloMXa9IP+mFEq79eK9KIxythuh76la7HiRnbAW/b4NQ6/gbO2/DtUiGIwX5Al8hUhtDMk4EoBF2AgJitOrhBEYDe88I3EqN2P4Nu11dYhknPVSvNaHhsg3RtCHF2bmCf8V6HVc/pPXkRG6OWxuIomgqw6GAxp0oSOQOkMkbd8yV3Fuw3XEFgPU2eIIPKK4OOP/U+d7fvnm1U6FSagpb7fjVN4s1c="
+    - COVERAGE_DEPS="php-coveralls/php-coveralls"
 
 matrix:
-  fast_finish: true
   include:
     - php: 5.6
       env:
@@ -33,9 +19,7 @@ matrix:
     - php: 5.6
       env:
         - DEPS=locked
-        - TEST_COVERAGE=true
-        - DEPLOY_DOCS="$(if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then echo -n 'true' ; else echo -n 'false' ; fi)"
-        - PATH="$HOME/.local/bin:$PATH"
+        - LEGACY_DEPS="phpunit/phpunit"
     - php: 5.6
       env:
         - DEPS=latest
@@ -45,7 +29,7 @@ matrix:
     - php: 7
       env:
         - DEPS=locked
-        - CS_CHECK=true
+        - LEGACY_DEPS="phpunit/phpunit"
     - php: 7
       env:
         - DEPS=latest
@@ -55,34 +39,38 @@ matrix:
     - php: 7.1
       env:
         - DEPS=locked
+        - CS_CHECK=true
+        - TEST_COVERAGE=true
     - php: 7.1
       env:
         - DEPS=latest
-
-notifications:
-  irc: "irc.freenode.org#zftalk.dev"
-  email: false
+    - php: 7.2
+      env:
+        - DEPS=lowest
+    - php: 7.2
+      env:
+        - DEPS=locked
+    - php: 7.2
+      env:
+        - DEPS=latest
 
 before_install:
-  - travis_retry composer self-update
-  - if [[ $TRAVIS_PHP_VERSION != "hhvm" && $TEST_COVERAGE != 'true' ]]; then phpenv config-rm xdebug.ini ; fi
+  - if [[ $TEST_COVERAGE != 'true' ]]; then phpenv config-rm xdebug.ini || return 0 ; fi
 
 install:
-  - travis_retry composer install $COMPOSER_ARGS
-  - if [[ $TRAVIS_PHP_VERSION =~ ^5.6 ]]; then travis_retry composer update $COMPOSER_ARGS --with-dependencies $LEGACY_DEPS ; fi
+  - travis_retry composer install $COMPOSER_ARGS --ignore-platform-reqs
+  - if [[ $LEGACY_DEPS != '' ]]; then travis_retry composer update $COMPOSER_ARGS --with-dependencies $LEGACY_DEPS ; fi
   - if [[ $DEPS == 'latest' ]]; then travis_retry composer update $COMPOSER_ARGS ; fi
   - if [[ $DEPS == 'lowest' ]]; then travis_retry composer update --prefer-lowest --prefer-stable $COMPOSER_ARGS ; fi
   - if [[ $TEST_COVERAGE == 'true' ]]; then travis_retry composer require --dev $COMPOSER_ARGS $COVERAGE_DEPS ; fi
-  - composer show
+  - stty cols 120 && composer show
 
 script:
-  - if [[ $TEST_COVERAGE == 'true' ]]; then ./vendor/bin/phpunit --coverage-clover clover.xml ; fi
-  - if [[ $TEST_COVERAGE != 'true' ]]; then ./vendor/bin/phpunit ; fi
-  - if [[ $CS_CHECK == 'true' ]]; then ./vendor/bin/php-cs-fixer fix -v --diff --dry-run ; fi
-  - if [[ $DEPLOY_DOCS == "true" && "$TRAVIS_TEST_RESULT" == "0" ]]; then wget -O theme-installer.sh "https://raw.githubusercontent.com/zendframework/zf-mkdoc-theme/master/theme-installer.sh" ; chmod 755 theme-installer.sh ; ./theme-installer.sh ; fi
-
-after_success:
-  - if [[ $DEPLOY_DOCS == "true" ]]; then echo "Preparing to build and deploy documentation" ; ./zf-mkdoc-theme/deploy.sh ; echo "Completed deploying documentation" ; fi
+  - if [[ $TEST_COVERAGE == 'true' ]]; then composer test-coverage ; else composer test ; fi
+  - if [[ $CS_CHECK == 'true' ]]; then composer cs-check ; fi
 
 after_script:
-  - if [[ $TEST_COVERAGE == 'true' ]]; then ./vendor/bin/coveralls ; fi
+  - if [[ $TEST_COVERAGE == 'true' ]]; then travis_retry php vendor/bin/php-coveralls -v ; fi
+
+notifications:
+  email: false
