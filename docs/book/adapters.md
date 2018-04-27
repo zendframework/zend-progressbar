@@ -14,7 +14,7 @@ can define which elements are displayed with the progressbar as well customize
 the order of them. You can also define the style of the progressbar itself.
 
 > ### Automatic console width recognition
-> 
+>
 > `shell_exec()` is required for this feature to work on \*nix based systems. On
 > Windows, there is always a fixed terminal width of 80 characters, so no
 > recognition is required there.

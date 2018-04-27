@@ -1,42 +1,51 @@
 {
     "name": "zendframework/zend-progressbar",
-    "description": "component to create and update progressbars in different environments",
+    "description": "Create and update progress bars in different environments",
     "license": "BSD-3-Clause",
     "keywords": [
-        "zf2",
+        "zf",
+        "zendframework",
         "progressbar"
     ],
-    "homepage": "https://github.com/zendframework/zend-progressbar",
-    "autoload": {
-        "psr-4": {
-            "Zend\\ProgressBar\\": "src/"
-        }
+    "support": {
+        "docs": "https://docs.zendframework.com/zend-progressbar/",
+        "issues": "https://github.com/zendframework/zend-progressbar/issues",
+        "source": "https://github.com/zendframework/zend-progressbar",
+        "rss": "https://github.com/zendframework/zend-progressbar/releases.atom",
+        "chat": "https://zendframework-slack.herokuapp.com",
+        "forum": "https://discourse.zendframework.com/c/questions/components"
     },
     "require": {
         "php": "^5.6 || ^7.0",
         "zendframework/zend-stdlib": "^2.7 || ^3.0"
     },
     "require-dev": {
-        "zendframework/zend-json": "^2.6.1",
-        "zendframework/zend-session": "^2.6.2",
         "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1.4",
-        "zendframework/zend-coding-standard": "~1.0.0"
+        "zendframework/zend-coding-standard": "~1.0.0",
+        "zendframework/zend-json": "^2.6.1",
+        "zendframework/zend-session": "^2.6.2"
     },
     "suggest": {
         "zendframework/zend-json": "Zend\\Json component",
         "zendframework/zend-session": "To support progressbar persistent"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.5-dev",
-            "dev-develop": "2.6-dev"
+    "autoload": {
+        "psr-4": {
+            "Zend\\ProgressBar\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "ZendTest\\ProgressBar\\": "test/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.5.x-dev",
+            "dev-develop": "2.6.x-dev"
         }
     },
     "scripts": {
