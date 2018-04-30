@@ -3,8 +3,8 @@
 
     
     <url>
-     <loc>None/</loc>
-     <lastmod>2016-07-05</lastmod>
+     <loc>/</loc>
+     <lastmod>2018-04-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,14 +12,14 @@
     
         
     <url>
-     <loc>None/intro/</loc>
-     <lastmod>2016-07-05</lastmod>
+     <loc>/intro/</loc>
+     <lastmod>2018-04-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/adapters/</loc>
-     <lastmod>2016-07-05</lastmod>
+     <loc>/adapters/</loc>
+     <lastmod>2018-04-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -27,8 +27,8 @@
 
     
     <url>
-     <loc>None/upload/</loc>
-     <lastmod>2016-07-05</lastmod>
+     <loc>/upload/</loc>
+     <lastmod>2018-04-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
