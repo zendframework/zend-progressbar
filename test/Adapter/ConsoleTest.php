@@ -9,19 +9,18 @@
 
 namespace ZendTest\ProgressBar\Adapter;
 
+use PHPUnit\Framework\TestCase;
 use Zend\ProgressBar\Adapter;
 use Zend\Stdlib\StringUtils;
-
-require_once 'MockupStream.php';
 
 /**
  * @group      Zend_ProgressBar
  */
-class ConsoleTest extends \PHPUnit_Framework_TestCase
+class ConsoleTest extends TestCase
 {
     protected function setUp()
     {
-        stream_wrapper_register("zendprogressbaradapterconsole", 'ZendTest\ProgressBar\Adapter\MockupStream');
+        stream_wrapper_register("zendprogressbaradapterconsole", MockupStream::class);
     }
 
     protected function tearDown()
@@ -80,7 +79,8 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidElement()
     {
-        $this->setExpectedException('Zend\ProgressBar\Adapter\Exception\InvalidArgumentException', 'Invalid element found');
+        $this->expectException(Adapter\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid element found');
         $adapter = new ConsoleStub(['width' => 30, 'elements' => ['foo']]);
     }
 
@@ -127,7 +127,7 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
 
     public function testCustomOrder()
     {
-        $adapter = new ConsoleStub(['width' => 25, 'elements' =>  [Adapter\Console::ELEMENT_ETA,
+        $adapter = new ConsoleStub(['width' => 25, 'elements' => [Adapter\Console::ELEMENT_ETA,
                                                                       Adapter\Console::ELEMENT_PERCENT,
                                                                       Adapter\Console::ELEMENT_BAR]]);
         $adapter->notify(0, 100, 0, 0, null, null);
@@ -137,7 +137,9 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
 
     public function testBarStyleIndicator()
     {
-        $adapter = new ConsoleStub(['width' => 20, 'elements' => [Adapter\Console::ELEMENT_BAR], 'barIndicatorChar' => '>']);
+        $adapter = new ConsoleStub(
+            ['width' => 20, 'elements' => [Adapter\Console::ELEMENT_BAR], 'barIndicatorChar' => '>']
+        );
         $adapter->notify(10, 100, .1, 0, null, null);
 
         $this->assertContains('[##>---------------]', $adapter->getLastOutput());
@@ -145,7 +147,9 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
 
     public function testBarStyleIndicatorWide()
     {
-        $adapter = new ConsoleStub(['width' => 20, 'elements' => [Adapter\Console::ELEMENT_BAR], 'barIndicatorChar' => '[]']);
+        $adapter = new ConsoleStub(
+            ['width' => 20, 'elements' => [Adapter\Console::ELEMENT_BAR], 'barIndicatorChar' => '[]']
+        );
         $adapter->notify(10, 100, .1, 0, null, null);
 
         $this->assertContains('[##[]--------------]', $adapter->getLastOutput());
@@ -153,7 +157,9 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
 
     public function testBarStyleLeftRightNormal()
     {
-        $adapter = new ConsoleStub(['width' => 20, 'elements' => [Adapter\Console::ELEMENT_BAR], 'barLeftChar' => '+', 'barRightChar' => ' ']);
+        $adapter = new ConsoleStub(
+            ['width' => 20, 'elements' => [Adapter\Console::ELEMENT_BAR], 'barLeftChar' => '+', 'barRightChar' => ' ']
+        );
         $adapter->notify(10, 100, .1, 0, null, null);
 
         $this->assertContains('[++                ]', $adapter->getLastOutput());
@@ -161,7 +167,9 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
 
     public function testBarStyleLeftRightWide()
     {
-        $adapter = new ConsoleStub(['width' => 20, 'elements' => [Adapter\Console::ELEMENT_BAR], 'barLeftChar' => '+-', 'barRightChar' => '=-']);
+        $adapter = new ConsoleStub(
+            ['width' => 20, 'elements' => [Adapter\Console::ELEMENT_BAR], 'barLeftChar' => '+-', 'barRightChar' => '=-']
+        );
         $adapter->notify(10, 100, .1, 0, null, null);
 
         $this->assertContains('[+-=-=-=-=-=-=-=-=-]', $adapter->getLastOutput());
@@ -169,7 +177,13 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
 
     public function testBarStyleLeftIndicatorRightWide()
     {
-        $adapter = new ConsoleStub(['width' => 20, 'elements' => [Adapter\Console::ELEMENT_BAR], 'barLeftChar' => '+-', 'barIndicatorChar' => '[]', 'barRightChar' => '=-']);
+        $adapter = new ConsoleStub([
+            'width' => 20,
+            'elements' => [Adapter\Console::ELEMENT_BAR],
+            'barLeftChar' => '+-',
+            'barIndicatorChar' => '[]',
+            'barRightChar' => '=-'
+        ]);
         $adapter->notify(10, 100, .1, 0, null, null);
 
         $this->assertContains('[+-[]=-=-=-=-=-=-=-]', $adapter->getLastOutput());
@@ -199,7 +213,9 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
 
     public function testTextElementDefaultLength()
     {
-        $adapter = new ConsoleStub(['width' => 100, 'elements' => [Adapter\Console::ELEMENT_TEXT, Adapter\Console::ELEMENT_BAR]]);
+        $adapter = new ConsoleStub(
+            ['width' => 100, 'elements' => [Adapter\Console::ELEMENT_TEXT, Adapter\Console::ELEMENT_BAR]]
+        );
         $adapter->notify(0, 100, 0, 0, null, 'foobar');
 
         $this->assertContains('foobar               [', $adapter->getLastOutput());
@@ -207,7 +223,11 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
 
     public function testTextElementCustomLength()
     {
-        $adapter = new ConsoleStub(['width' => 100, 'elements' => [Adapter\Console::ELEMENT_TEXT, Adapter\Console::ELEMENT_BAR], 'textWidth' => 10]);
+        $adapter = new ConsoleStub([
+            'width' => 100,
+            'elements' => [Adapter\Console::ELEMENT_TEXT, Adapter\Console::ELEMENT_BAR],
+            'textWidth' => 10
+        ]);
         $adapter->notify(0, 100, 0, 0, null, 'foobar');
 
         $this->assertContains('foobar     [', $adapter->getLastOutput());
@@ -224,7 +244,8 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
     {
         $adapter = new Adapter\Console();
 
-        $this->setExpectedException('Zend\ProgressBar\Adapter\Exception\RuntimeException', 'Unable to open stream');
+        $this->expectException(Adapter\Exception\RuntimeException::class);
+        $this->expectExceptionMessage('Unable to open stream');
         $adapter->setOutputStream(null);
     }
 
@@ -275,7 +296,8 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
     {
         $adapter = new Adapter\Console();
 
-        $this->setExpectedException('Zend\ProgressBar\Adapter\Exception\InvalidArgumentException', 'Character may not be empty');
+        $this->expectException(Adapter\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Character may not be empty');
         $adapter->setBarLeftChar(null);
     }
 
@@ -283,7 +305,8 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
     {
         $adapter = new Adapter\Console();
 
-        $this->setExpectedException('Zend\ProgressBar\Adapter\Exception\InvalidArgumentException', 'Character may not be empty');
+        $this->expectException(Adapter\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Character may not be empty');
         $adapter->setBarRightChar(null);
     }
 
@@ -291,7 +314,8 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
     {
         $adapter = new Adapter\Console();
 
-        $this->setExpectedException('Zend\ProgressBar\Adapter\Exception\InvalidArgumentException', 'Invalid finish action specified');
+        $this->expectException(Adapter\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid finish action specified');
         $adapter->setFinishAction('CUSTOM_FINISH_ACTION');
     }
 
@@ -305,8 +329,10 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
                                                                                       Adapter\Console::ELEMENT_BAR,
                                                                                       Adapter\Console::ELEMENT_ETA,
                                                                                       Adapter\Console::ELEMENT_TEXT]]);
-        $adapter->notify(21, 100, .21, 60, 60, 'ChineseTest 這是多字節長度裁剪的測試。我們希望能有超過20名中國字符的長字符串');
+        // @codingStandardsIgnoreStart
+        $adapter->notify( 21, 100, .21, 60, 60, 'ChineseTest 這是多字節長度裁剪的測試。我們希望能有超過20名中國字符的長字符串');
         $this->assertEquals(' 21% [##-------] ETA 00:01:00 ChineseTest 這是多字節長度裁', $adapter->getLastOutput());
+        // @codingStandardsIgnoreEnd
 
         $wrapper = StringUtils::getWrapper($adapter->getCharset());
         $this->assertEquals($outputWidth, $wrapper->strlen($adapter->getLastOutput()));

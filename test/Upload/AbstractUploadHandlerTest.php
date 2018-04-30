@@ -9,12 +9,15 @@
 
 namespace ZendTest\ProgressBar\Upload;
 
+use PHPUnit\Framework\TestCase;
+use Zend\ProgressBar\Adapter\AbstractAdapter;
 use Zend\ProgressBar\ProgressBar;
+use Zend\ProgressBar\Upload\AbstractUploadHandler;
 
 /**
  * @group      Zend_ProgressBar
  */
-class AbstractUploadHandlerTest extends \PHPUnit_Framework_TestCase
+class AbstractUploadHandlerTest extends TestCase
 {
     /**
      * @return void
@@ -28,9 +31,7 @@ class AbstractUploadHandlerTest extends \PHPUnit_Framework_TestCase
             'message'  => '',
             'done'     => false,
         ];
-        $stub = $this->getMockForAbstractClass(
-            'Zend\ProgressBar\Upload\AbstractUploadHandler'
-        );
+        $stub = $this->getMockForAbstractClass(AbstractUploadHandler::class);
         $stub->expects($this->any())
             ->method('getUploadProgress')
             ->will($this->returnValue($progressData));
@@ -52,9 +53,7 @@ class AbstractUploadHandlerTest extends \PHPUnit_Framework_TestCase
             'message'  => 'No upload in progress',
             'done'     => true
         ];
-        $stub = $this->getMockForAbstractClass(
-            'Zend\ProgressBar\Upload\AbstractUploadHandler'
-        );
+        $stub = $this->getMockForAbstractClass(AbstractUploadHandler::class);
         $stub->expects($this->any())
             ->method('getUploadProgress')
             ->will($this->returnValue(false));
@@ -98,9 +97,7 @@ class AbstractUploadHandlerTest extends \PHPUnit_Framework_TestCase
      */
     public function testProgressAdapterNotify($progressData)
     {
-        $adapterStub = $this->getMockForAbstractClass(
-            'Zend\ProgressBar\Adapter\AbstractAdapter'
-        );
+        $adapterStub = $this->getMockForAbstractClass(AbstractAdapter::class);
         if ($progressData['done']) {
             $adapterStub->expects($this->once())
                 ->method('finish');
@@ -109,9 +106,7 @@ class AbstractUploadHandlerTest extends \PHPUnit_Framework_TestCase
                 ->method('notify');
         }
 
-        $stub = $this->getMockForAbstractClass(
-            'Zend\ProgressBar\Upload\AbstractUploadHandler'
-        );
+        $stub = $this->getMockForAbstractClass(AbstractUploadHandler::class);
         $stub->expects($this->once())
             ->method('getUploadProgress')
             ->will($this->returnValue($progressData));
@@ -133,9 +128,7 @@ class AbstractUploadHandlerTest extends \PHPUnit_Framework_TestCase
      */
     public function testProgressBarUpdate($progressData)
     {
-        $adapterStub = $this->getMockForAbstractClass(
-            'Zend\ProgressBar\Adapter\AbstractAdapter'
-        );
+        $adapterStub = $this->getMockForAbstractClass(AbstractAdapter::class);
         if ($progressData['done']) {
             $adapterStub->expects($this->once())
                 ->method('finish');
@@ -144,13 +137,14 @@ class AbstractUploadHandlerTest extends \PHPUnit_Framework_TestCase
                 ->method('notify');
         }
         $progressBar = new ProgressBar(
-            $adapterStub, 0, $progressData['total'], 'testSession'
+            $adapterStub,
+            0,
+            $progressData['total'],
+            'testSession'
         );
 
 
-        $stub = $this->getMockForAbstractClass(
-            'Zend\ProgressBar\Upload\AbstractUploadHandler'
-        );
+        $stub = $this->getMockForAbstractClass(AbstractUploadHandler::class);
         $stub->expects($this->once())
             ->method('getUploadProgress')
             ->will($this->returnValue($progressData));

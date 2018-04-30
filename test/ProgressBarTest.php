@@ -9,15 +9,21 @@
 
 namespace ZendTest\ProgressBar;
 
+use PHPUnit\Framework\TestCase;
+use Zend\ProgressBar\Exception;
+use ZendTest\ProgressBar\TestAsset\MockUp;
+use ZendTest\ProgressBar\TestAsset\Stub;
+
 /**
  * @group      Zend_ProgressBar
  */
-class ProgressBarTest extends \PHPUnit_Framework_TestCase
+class ProgressBarTest extends TestCase
 {
     public function testGreaterMin()
     {
-        $this->setExpectedException('Zend\ProgressBar\Exception\OutOfRangeException', '$max must be greater than $min');
-        $progressBar = $this->_getProgressBar(1, 0);
+        $this->expectExceptionMessage(Exception\OutOfRangeException::class);
+        $this->expectExceptionMessage('$max must be greater than $min');
+        $this->_getProgressBar(1, 0);
     }
 
     public function testPersistence()
@@ -84,100 +90,10 @@ class ProgressBarTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(null, $progressBar->getTimeRemaining());
     }
 
+    // @codingStandardsIgnoreStart
     protected function _getProgressBar($min, $max, $persistenceNamespace = null)
     {
+        // @codingStandardsIgnoreEnd
         return new Stub(new MockUp(), $min, $max, $persistenceNamespace);
-    }
-}
-
-class Stub extends \Zend\ProgressBar\ProgressBar
-{
-    public function sleep($seconds)
-    {
-        $this->startTime -= $seconds;
-    }
-
-    public function getCurrent()
-    {
-        return $this->adapter->getCurrent();
-    }
-
-    public function getMax()
-    {
-        return $this->adapter->getMax();
-    }
-
-    public function getPercent()
-    {
-        return $this->adapter->getPercent();
-    }
-
-    public function getTimeTaken()
-    {
-        return $this->adapter->getTimeTaken();
-    }
-
-    public function getTimeRemaining()
-    {
-        return $this->adapter->getTimeRemaining();
-    }
-
-    public function getText()
-    {
-        return $this->adapter->getText();
-    }
-}
-
-class MockUp extends \Zend\ProgressBar\Adapter\AbstractAdapter
-{
-    protected $_current;
-    protected $_max;
-    protected $_percent;
-    protected $_timeTaken;
-    protected $_timeRemaining;
-    protected $_text;
-
-    public function notify($current, $max, $percent, $timeTaken, $timeRemaining, $text)
-    {
-        $this->_current       = $current;
-        $this->_max           = $max;
-        $this->_percent       = $percent;
-        $this->_timeTaken     = $timeTaken;
-        $this->_timeRemaining = $timeRemaining;
-        $this->_text          = $text;
-    }
-
-    public function finish()
-    {
-    }
-
-    public function getCurrent()
-    {
-        return $this->_current;
-    }
-
-    public function getMax()
-    {
-        return $this->_max;
-    }
-
-    public function getPercent()
-    {
-        return $this->_percent;
-    }
-
-    public function getTimeTaken()
-    {
-        return $this->_timeTaken;
-    }
-
-    public function getTimeRemaining()
-    {
-        return $this->_timeRemaining;
-    }
-
-    public function getText()
-    {
-        return $this->_text;
     }
 }

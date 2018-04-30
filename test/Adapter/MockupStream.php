@@ -18,8 +18,10 @@ class MockupStream
 
     public static $tests = [];
 
+    // @codingStandardsIgnoreStart
     public function stream_open($path, $mode, $options, &$opened_path)
     {
+        // @codingStandardsIgnoreEnd
         $url = parse_url($path);
         $this->test = $url["host"];
         $this->position = 0;
@@ -28,15 +30,19 @@ class MockupStream
         return true;
     }
 
+    // @codingStandardsIgnoreStart
     public function stream_read($count)
     {
+        // @codingStandardsIgnoreEnd
         $ret = substr(static::$tests[$this->test], $this->position, $count);
         $this->position += strlen($ret);
         return $ret;
     }
 
+    // @codingStandardsIgnoreStart
     public function stream_write($data)
     {
+        // @codingStandardsIgnoreEnd
         $left = substr(static::$tests[$this->test], 0, $this->position);
         $right = substr(static::$tests[$this->test], $this->position + strlen($data));
         static::$tests[$this->test] = $left . $data . $right;
@@ -44,18 +50,24 @@ class MockupStream
         return strlen($data);
     }
 
+    // @codingStandardsIgnoreStart
     public function stream_tell()
     {
+        // @codingStandardsIgnoreEnd
         return $this->position;
     }
 
+    // @codingStandardsIgnoreStart
     public function stream_eof()
     {
+        // @codingStandardsIgnoreEnd
         return $this->position >= strlen(static::$tests[$this->test]);
     }
 
+    // @codingStandardsIgnoreStart
     public function stream_seek($offset, $whence)
     {
+        // @codingStandardsIgnoreEnd
         switch ($whence) {
             case SEEK_SET:
                 if ($offset < strlen(static::$tests[$this->test]) && $offset >= 0) {
