@@ -262,7 +262,7 @@ automatically detect terminal widths, but supports custom widths as well. You
 can define which elements are displayed with the progressbar as well customize
 the order of them. You can also define the style of the progressbar itself.</p>
 <blockquote>
-<h3 id="automatic-console-width-recognition">Automatic console width recognition</h3>
+<h3>Automatic console width recognition</h3>
 <p><code>shell_exec()</code> is required for this feature to work on *nix based systems. On
 Windows, there is always a fixed terminal width of 80 characters, so no
 recognition is required there.</p>
@@ -418,15 +418,13 @@ method on every update with a JSON object, containing the following parameters:<
 </tr>
 </tbody>
 </table></div>
-<h3 id="basic-example-for-the-client-side">Basic example for the client-side</h3>
+<h3>Basic example for the client-side</h3>
 <p>This example illustrates a basic setup of HTML, CSS, and JavaScript for the <code>JsPush</code> adapter</p>
-<pre class="codehilite"><code class="language-html">&lt;div id="zend-progressbar-container"&gt;
-    &lt;div id="zend-progressbar-done"&gt;&lt;/div&gt;
+<div class=md-fenced-code-tabs id=tab-tab-group-0><ul class="nav nav-tabs"><li class="nav-item active"><a href=#tab-group-0-0_html role=tab data-toggle=tab data-lang=html>Html</a></li><li class="nav-item "><a href=#tab-group-0-1_css role=tab data-toggle=tab data-lang=css>Css</a></li><li class="nav-item "><a href=#tab-group-0-2_javascript role=tab data-toggle=tab data-lang=javascript>Javascript</a></li></ul><div class=tab-content><div id=tab-group-0-0_html class="tab-pane active" role=tabpanel><pre class=codehilite><code class=language-html>&lt;div id=&quot;zend-progressbar-container&quot;&gt;
+    &lt;div id=&quot;zend-progressbar-done&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;iframe src="long-running-process.php" id="long-running-process"&gt;&lt;/iframe&gt;</code></pre>
-
-<pre class="codehilite"><code class="language-css">#long-running-process {
+&lt;iframe src=&quot;long-running-process.php&quot; id=&quot;long-running-process&quot;&gt;&lt;/iframe&gt;</code></pre></div><div id=tab-group-0-1_css class="tab-pane " role=tabpanel><pre class=codehilite><code class=language-css>#long-running-process {
     position: absolute;
     left: -100px;
     top: -100px;
@@ -448,12 +446,10 @@ method on every update with a JSON object, containing the following parameters:<
     height: 30px;
 
     background-color: #000000;
-}</code></pre>
-
-<pre class="codehilite"><code class="language-javascript">function Zend\ProgressBar\Update(data)
+}</code></pre></div><div id=tab-group-0-2_javascript class="tab-pane " role=tabpanel><pre class=codehilite><code class=language-javascript>function Zend\ProgressBar\Update(data)
 {
     document.getElementById('zend-progressbar-done').style.width = data.percent + '%';
-}</code></pre>
+}</code></pre></div></div></div>
 
 <p>This will create a container with a black border and a block which indicates the
 current process. You should not hide the <code>iframe</code> or <code>object</code> using <code>display: none;</code>,
@@ -467,7 +463,7 @@ available JavaScript libraries like Dojo, jQuery etc.:</p>
 <li><a href="http://livepipe.net/control/progressbar">Prototype</a></li>
 </ul>
 <blockquote>
-<h3 id="interval-of-updates">Interval of updates</h3>
+<h3>Interval of updates</h3>
 <p>Do not send too many updates, as every update has a minimum size of 1kb. This
 is a requirement for the Safari browser to actually render and execute the
 function call. Internet Explorer has a similar limitation of 256 bytes.</p>
@@ -534,7 +530,7 @@ the constructor. The available options are:</p>
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-progressbar/edit/master/docs/adapters.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-progressbar/edit/master/docs/book/adapters.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>

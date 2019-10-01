@@ -248,9 +248,9 @@ provide a convenient way to add the hidden input based on your handler type.</p>
 <h2 id="methods-of-reporting-progress">Methods of Reporting Progress</h2>
 <p>There are two methods for reporting the current upload progress status: using a
 ProgressBar Adapter, or using the returned status array manually.</p>
-<h3 id="using-a-progressbar-adapter">Using a ProgressBar Adapter</h3>
+<h3>Using a ProgressBar Adapter</h3>
 <p>A zend-progressbar adapter can be used to display upload progress to your users.</p>
-<pre class="codehilite"><code class="language-php">use Zend\I18n\Filter\Alnum as AlnumFilter;
+<p> <pre class=codehilite><code class=language-php>use Zend\I18n\Filter\Alnum as AlnumFilter;
 use Zend\ProgressBar\Adapter;
 use Zend\ProgressBar\Upload;
 
@@ -263,10 +263,9 @@ $id       = $filter-&gt;filter($_GET['id']);
 $status   = null;
 while (empty($status['done'])) {
     $status = $progress-&gt;getProgress($id);
-}</code></pre>
-
+}</code></pre></p>
 <p>Each time the <code>getProgress()</code> method is called, the adapter will be updated.</p>
-<h3 id="using-the-status-array">Using the Status Array</h3>
+<h3>Using the Status Array</h3>
 <p>You can also work manually with <code>getProgress()</code> without using an adapter.</p>
 <p><code>getProgress()</code> will return an array with several keys. They will sometimes
 differ based on the specific upload handler used, but the following keys are
@@ -303,7 +302,7 @@ always standard:</p>
 </table></div>
 <p>All other returned keys are provided directly from the specific handler.</p>
 <p>An example of using the status array manually:</p>
-<pre class="codehilite"><code class="language-php">use Zend\ProgressBar\Upload\SessionProgress;
+<p> <pre class=codehilite><code class=language-php>use Zend\ProgressBar\Upload\SessionProgress;
 use Zend\View\Model\JsonModel;
 
 // In a Controller...
@@ -317,13 +316,12 @@ public function sessionProgressAction()
 
 // Returns JSON
 //{
-//    "total"    : 204800,
-//    "current"  : 10240,
-//    "rate"     : 1024,
-//    "message"  : "10kB / 200kB",
-//    "done"     : false
-//}</code></pre>
-
+//    &quot;total&quot;    : 204800,
+//    &quot;current&quot;  : 10240,
+//    &quot;rate&quot;     : 1024,
+//    &quot;message&quot;  : &quot;10kB / 200kB&quot;,
+//    &quot;done&quot;     : false
+//}</code></pre></p>
 <h2 id="standard-handlers">Standard Handlers</h2>
 <p>zend-progressbar comes with the following three upload handlers:</p>
 <ul>
@@ -331,29 +329,29 @@ public function sessionProgressAction()
 <li><a href="#session-progress-handler">SessionProgress</a></li>
 <li><a href="#upload-progress-handler">UploadProgress</a></li>
 </ul>
-<h3 id="apc-progress-handler">APC Progress Handler</h3>
+<h3>APC Progress Handler</h3>
 <p><code>Zend\ProgressBar\Upload\ApcProgress</code> uses the <a href="http://php.net/apc">APC extension</a>
 for tracking upload progress.</p>
 <blockquote>
-<h4 id="extension-required">Extension required</h4>
+<h4>Extension required</h4>
 <p>The <a href="http://php.net/apc">APC extension</a> is required when using this handler.</p>
 </blockquote>
 <p>This handler is best used with the
 <a href="http://docs.zendframework.com/zend-form/helper/form-file-apc-progress/">FormFileApcProgress</a>
 view helper, to provide a hidden element with the upload progress identifier.</p>
-<h3 id="session-progress-handler">Session Progress Handler</h3>
+<h3>Session Progress Handler</h3>
 <p>The <code>Zend\ProgressBar\Upload\SessionProgress</code> handler uses the PHP
 <a href="http://php.net/session.upload-progress">Session Progress</a> feature for tracking
 upload progress.</p>
 <p>This handler is best used with the
 <a href="http://docs.zendframework.com/zend-form/helper/form-file-session-progress/">FormFileSessionProgress</a>
 view helper, to provide a hidden element with the upload progress identifier.</p>
-<h3 id="upload-progress-handler">Upload Progress Handler</h3>
+<h3>Upload Progress Handler</h3>
 <p>The <code>Zend\ProgressBar\Upload\UploadProgress</code> handler uses the
 <a href="http://pecl.php.net/package/uploadprogress">PECL Uploadprogress extension</a> for
 tracking upload progress.</p>
 <blockquote>
-<h4 id="extension-required_1">Extension required</h4>
+<h4>Extension required</h4>
 <p>The <a href="http://pecl.php.net/package/uploadprogress">PECL Uploadprogress extension</a>
 is required in order to use this handler.</p>
 </blockquote>
@@ -389,7 +387,7 @@ view helper, to provide a hidden element with the upload progress identifier.</p
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-progressbar/edit/master/docs/upload.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-progressbar/edit/master/docs/book/upload.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>

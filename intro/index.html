@@ -255,7 +255,7 @@ precalculated values like percentage and estimated time left.</p>
 <p>To use the component, instantiate <code>Zend\ProgressBar\ProgressBar</code>, providing both
 a a min- and a max-value, and an adapter for providing data output. If you want
 to process a file, you would do something like:</p>
-<pre class="codehilite"><code class="language-php">use Zend\ProgressBar\ProgressBar;
+<p> <pre class=codehilite><code class=language-php>use Zend\ProgressBar\ProgressBar;
 
 $progressBar = new ProgressBar($adapter, 0, $fileSize);
 
@@ -264,8 +264,7 @@ while (! feof($fp)) {
     $progressBar-&gt;update($currentByteCount);
 }
 
-$progressBar-&gt;finish();</code></pre>
-
+$progressBar-&gt;finish();</code></pre></p>
 <p>In the first step, an instance of <code>Zend\ProgressBar\ProgressBar</code> is created,
 with a specific adapter, a min-value of 0 and a max-value of the total filesize.
 Then a file is processed and in every loop the progressbar is updated with the
@@ -314,7 +313,7 @@ in the next request run again.</p>
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-progressbar/edit/master/docs/intro.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-progressbar/edit/master/docs/book/intro.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>
