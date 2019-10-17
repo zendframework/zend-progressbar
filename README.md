@@ -9,5 +9,20 @@ one of the multiple adapters. On every update, it takes an absolute value and
 optionally a status message, and then calls the adapter with some precalculated
 values like percentage and estimated time left.
 
-- File issues at https://github.com/zendframework/zend-progressbar/issues
-- Documentation is at https://docs.zendframework.com/zend-progressbar/
+## Installation
+
+Run the following to install this library:
+
+```bash
+$ composer require zendframework/zend-progressbar
+```
+
+## Documentation
+
+Browse the documentation online at https://docs.zendframework.com/zend-progressbar/
+
+## Support
+
+* [Issues](https://github.com/zendframework/zend-progressbar/issues/)
+* [Chat](https://zendframework-slack.herokuapp.com/)
+* [Forum](https://discourse.zendframework.com/)
