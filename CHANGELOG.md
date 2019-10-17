@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- Nothing.
+- [#27](https://github.com/zendframework/zend-progressbar/pull/27) adds support for PHP 7.3.
 
 ### Changed
 
@@ -18,7 +18,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Removed
 
-- Nothing.
+- [#27](https://github.com/zendframework/zend-progressbar/pull/27) removes support for zend-stdlib v2 releases.
 
 ### Fixed
 
