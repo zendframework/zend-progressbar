@@ -1,5 +1,9 @@
 # zend-progressbar
 
+> ## Repository abandoned 2019-12-31
+>
+> This repository has moved to laminas/laminas-progressbar.
+
 [![Build Status](https://secure.travis-ci.org/zendframework/zend-progressbar.svg?branch=master)](https://secure.travis-ci.org/zendframework/zend-progressbar)
 [![Coverage Status](https://coveralls.io/repos/github/zendframework/zend-progressbar/badge.svg?branch=master)](https://coveralls.io/github/zendframework/zend-progressbar?branch=master)
 
